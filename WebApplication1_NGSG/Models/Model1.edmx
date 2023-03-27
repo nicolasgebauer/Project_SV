@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BienesRaicesDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Inscription">
+          <Key>
+            <PropertyRef Name="AtentionNumber" />
+          </Key>
+          <Property Name="AtentionNumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CNE" Type="varchar" MaxLength="29" />
+          <Property Name="Comunne" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Block" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Site" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Page" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="InscriptionNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="InscriptionDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Multyproperty">
+          <Key>
+            <PropertyRef Name="Comunne" />
+            <PropertyRef Name="Block" />
+            <PropertyRef Name="Site" />
+            <PropertyRef Name="Rut" />
+          </Key>
+          <Property Name="Comunne" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Block" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Site" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rut" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Percentage" Type="float" Nullable="false" />
+          <Property Name="Page" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="InscriptionNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="InscriptionYear" Type="int" Nullable="false" />
+          <Property Name="InscriptionDate" Type="date" Nullable="false" />
+          <Property Name="StartCurrencyYear" Type="int" Nullable="false" />
+          <Property Name="EndCurrencyYear" Type="int" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Rut" />
+          </Key>
+          <Property Name="Rut" Type="varchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="Comunne" />
+            <PropertyRef Name="Block" />
+            <PropertyRef Name="Site" />
+          </Key>
+          <Property Name="Comunne" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Block" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Site" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Page" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="InscriptionNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="InscriptionYear" Type="int" Nullable="false" />
+          <Property Name="InscriptionDate" Type="date" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="BienesRaicesDBModelStoreContainer">
+          <EntitySet Name="Inscription" EntityType="Self.Inscription" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Multyproperty" EntityType="Self.Multyproperty" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BienesRaicesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Inscription">
+          <Key>
+            <PropertyRef Name="AtentionNumber" />
+          </Key>
+          <Property Name="AtentionNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CNE" Type="String" MaxLength="29" FixedLength="false" Unicode="false" />
+          <Property Name="Comunne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Block" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InscriptionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InscriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityType Name="Multyproperty">
+          <Key>
+            <PropertyRef Name="Comunne" />
+            <PropertyRef Name="Block" />
+            <PropertyRef Name="Site" />
+            <PropertyRef Name="Rut" />
+          </Key>
+          <Property Name="Comunne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Block" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Percentage" Type="Double" Nullable="false" />
+          <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InscriptionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InscriptionYear" Type="Int32" Nullable="false" />
+          <Property Name="InscriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="StartCurrencyYear" Type="Int32" Nullable="false" />
+          <Property Name="EndCurrencyYear" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="Rut" />
+          </Key>
+          <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="Comunne" />
+            <PropertyRef Name="Block" />
+            <PropertyRef Name="Site" />
+          </Key>
+          <Property Name="Comunne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Block" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InscriptionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="InscriptionYear" Type="Int32" Nullable="false" />
+          <Property Name="InscriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
+        <EntityContainer Name="BienesRaicesDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Inscription" EntityType="Self.Inscription" />
+          <EntitySet Name="Multyproperty" EntityType="Self.Multyproperty" />
+          <EntitySet Name="Person" EntityType="Self.Person" />
+          <EntitySet Name="Property" EntityType="Self.Property" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BienesRaicesDBModelStoreContainer" CdmEntityContainer="BienesRaicesDBEntities">
+          <EntitySetMapping Name="Inscription">
+            <EntityTypeMapping TypeName="BienesRaicesDBModel.Inscription">
+              <MappingFragment StoreEntitySet="Inscription">
+                <ScalarProperty Name="AtentionNumber" ColumnName="AtentionNumber" />
+                <ScalarProperty Name="CNE" ColumnName="CNE" />
+                <ScalarProperty Name="Comunne" ColumnName="Comunne" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Page" ColumnName="Page" />
+                <ScalarProperty Name="InscriptionNumber" ColumnName="InscriptionNumber" />
+                <ScalarProperty Name="InscriptionDate" ColumnName="InscriptionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Multyproperty">
+            <EntityTypeMapping TypeName="BienesRaicesDBModel.Multyproperty">
+              <MappingFragment StoreEntitySet="Multyproperty">
+                <ScalarProperty Name="Comunne" ColumnName="Comunne" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Rut" ColumnName="Rut" />
+                <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+                <ScalarProperty Name="Page" ColumnName="Page" />
+                <ScalarProperty Name="InscriptionNumber" ColumnName="InscriptionNumber" />
+                <ScalarProperty Name="InscriptionYear" ColumnName="InscriptionYear" />
+                <ScalarProperty Name="InscriptionDate" ColumnName="InscriptionDate" />
+                <ScalarProperty Name="StartCurrencyYear" ColumnName="StartCurrencyYear" />
+                <ScalarProperty Name="EndCurrencyYear" ColumnName="EndCurrencyYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Person">
+            <EntityTypeMapping TypeName="BienesRaicesDBModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="Rut" ColumnName="Rut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property">
+            <EntityTypeMapping TypeName="BienesRaicesDBModel.Property">
+              <MappingFragment StoreEntitySet="Property">
+                <ScalarProperty Name="Comunne" ColumnName="Comunne" />
+                <ScalarProperty Name="Block" ColumnName="Block" />
+                <ScalarProperty Name="Site" ColumnName="Site" />
+                <ScalarProperty Name="Page" ColumnName="Page" />
+                <ScalarProperty Name="InscriptionNumber" ColumnName="InscriptionNumber" />
+                <ScalarProperty Name="InscriptionYear" ColumnName="InscriptionYear" />
+                <ScalarProperty Name="InscriptionDate" ColumnName="InscriptionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BienesRaicesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Inscription">
+    <Key>
+      <PropertyRef Name="AtentionNumber" />
+    </Key>
+    <Property Name="AtentionNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CNE" Type="String" MaxLength="29" FixedLength="false" Unicode="false" />
+    <Property Name="Comunne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Block" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="Multyproperty">
+    <Key>
+      <PropertyRef Name="Comunne" />
+      <PropertyRef Name="Block" />
+      <PropertyRef Name="Site" />
+      <PropertyRef Name="Rut" />
+    </Key>
+    <Property Name="Comunne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Block" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Percentage" Type="Double" Nullable="false" />
+    <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionYear" Type="Int32" Nullable="false" />
+    <Property Name="InscriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StartCurrencyYear" Type="Int32" Nullable="false" />
+    <Property Name="EndCurrencyYear" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Rut" />
+    </Key>
+    <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="Comunne" />
+      <PropertyRef Name="Block" />
+      <PropertyRef Name="Site" />
+    </Key>
+    <Property Name="Comunne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Block" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionYear" Type="Int32" Nullable="false" />
+    <Property Name="InscriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityContainer Name="BienesRaicesDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Inscription" EntityType="Self.Inscription" />
+    <EntitySet Name="Multyproperty" EntityType="Self.Multyproperty" />
+    <EntitySet Name="Person" EntityType="Self.Person" />
+    <EntitySet Name="Property" EntityType="Self.Property" />
+  </EntityContainer>
+</Schema>
