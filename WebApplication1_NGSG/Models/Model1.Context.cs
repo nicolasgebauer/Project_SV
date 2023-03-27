@@ -29,5 +29,7 @@ namespace WebApplication1_NGSG.Models
         public virtual DbSet<Multyproperty> Multyproperty { get; set; }
         public virtual DbSet<Person> Person { get; set; }
         public virtual DbSet<Property> Property { get; set; }
+        public virtual DbSet<Acquirer> Acquirer { get; set; }
+        public virtual DbSet<Alienator> Alienator { get; set; }
     }
 }

@@ -52,5 +52,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Acquirer">
+      <EntityTypeMapping TypeName="BienesRaicesDBModel.Acquirer">
+        <MappingFragment StoreEntitySet="Acquirer">
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="AtentionNumber" ColumnName="AtentionNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Alienator">
+      <EntityTypeMapping TypeName="BienesRaicesDBModel.Alienator">
+        <MappingFragment StoreEntitySet="Alienator">
+          <ScalarProperty Name="Percentage" ColumnName="Percentage" />
+          <ScalarProperty Name="Rut" ColumnName="Rut" />
+          <ScalarProperty Name="AtentionNumber" ColumnName="AtentionNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

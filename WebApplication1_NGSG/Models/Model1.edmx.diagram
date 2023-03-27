@@ -9,6 +9,12 @@
         <EntityTypeShape EntityType="BienesRaicesDBModel.Multyproperty" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BienesRaicesDBModel.Person" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BienesRaicesDBModel.Property" Width="1.5" PointX="5.375" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BienesRaicesDBModel.Acquirer" Width="1.5" PointX="7" PointY="0.75" />
+        <EntityTypeShape EntityType="BienesRaicesDBModel.Alienator" Width="1.5" PointX="8" PointY="3.75" />
+        <AssociationConnector Association="BienesRaicesDBModel.FK__Acquirer__Atenti__00200768" />
+        <AssociationConnector Association="BienesRaicesDBModel.FK__Acquirer__Rut__7F2BE32F" />
+        <AssociationConnector Association="BienesRaicesDBModel.FK__Alienator__Atent__7C4F7684" />
+        <AssociationConnector Association="BienesRaicesDBModel.FK__Alienator__Rut__7B5B524B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

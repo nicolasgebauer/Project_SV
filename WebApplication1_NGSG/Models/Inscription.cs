@@ -14,6 +14,13 @@ namespace WebApplication1_NGSG.Models
     
     public partial class Inscription
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Inscription()
+        {
+            this.Acquirer = new HashSet<Acquirer>();
+            this.Alienator = new HashSet<Alienator>();
+        }
+    
         public int AtentionNumber { get; set; }
         public string CNE { get; set; }
         public string Comunne { get; set; }
@@ -22,5 +29,10 @@ namespace WebApplication1_NGSG.Models
         public string Page { get; set; }
         public string InscriptionNumber { get; set; }
         public System.DateTime InscriptionDate { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Acquirer> Acquirer { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Alienator> Alienator { get; set; }
     }
 }
