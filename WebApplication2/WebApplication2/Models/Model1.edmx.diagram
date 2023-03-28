@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="420096972e65476fa27971bb3d219ae0" Name="Diagram1">
+        <EntityTypeShape EntityType="BienesRaicesDBModel.Acquirer" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BienesRaicesDBModel.Alienator" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BienesRaicesDBModel.Inscription" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BienesRaicesDBModel.Multyproperty" Width="1.5" PointX="5.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BienesRaicesDBModel.Person" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="BienesRaicesDBModel.Property" Width="1.5" PointX="2.75" PointY="7.125" IsExpanded="true" />
+        <AssociationConnector Association="BienesRaicesDBModel.FK__Acquirer__Atenti__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="BienesRaicesDBModel.FK__Acquirer__Rut__440B1D61" ManuallyRouted="false" />
+        <AssociationConnector Association="BienesRaicesDBModel.FK__Alienator__Atent__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="BienesRaicesDBModel.FK__Alienator__Rut__403A8C7D" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BienesRaicesDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Acquirer">
+    <Key>
+      <PropertyRef Name="AtentionNumber" />
+      <PropertyRef Name="Rut" />
+    </Key>
+    <Property Name="AtentionNumber" Type="Int32" Nullable="false" />
+    <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Percentage" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Inscription" Relationship="Self.FK__Acquirer__Atenti__44FF419A" FromRole="Acquirer" ToRole="Inscription" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Acquirer__Rut__440B1D61" FromRole="Acquirer" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Alienator">
+    <Key>
+      <PropertyRef Name="AtentionNumber" />
+      <PropertyRef Name="Rut" />
+    </Key>
+    <Property Name="AtentionNumber" Type="Int32" Nullable="false" />
+    <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Percentage" Type="Double" Nullable="false" />
+    <NavigationProperty Name="Inscription" Relationship="Self.FK__Alienator__Atent__412EB0B6" FromRole="Alienator" ToRole="Inscription" />
+    <NavigationProperty Name="Person" Relationship="Self.FK__Alienator__Rut__403A8C7D" FromRole="Alienator" ToRole="Person" />
+  </EntityType>
+  <EntityType Name="Inscription">
+    <Key>
+      <PropertyRef Name="AtentionNumber" />
+    </Key>
+    <Property Name="AtentionNumber" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CNE" Type="String" MaxLength="29" FixedLength="false" Unicode="false" />
+    <Property Name="Comunne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Block" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="Acquirers" Relationship="Self.FK__Acquirer__Atenti__44FF419A" FromRole="Inscription" ToRole="Acquirer" />
+    <NavigationProperty Name="Alienators" Relationship="Self.FK__Alienator__Atent__412EB0B6" FromRole="Inscription" ToRole="Alienator" />
+  </EntityType>
+  <EntityType Name="Multyproperty">
+    <Key>
+      <PropertyRef Name="Comunne" />
+      <PropertyRef Name="Block" />
+      <PropertyRef Name="Site" />
+      <PropertyRef Name="Rut" />
+    </Key>
+    <Property Name="Comunne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Block" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Percentage" Type="Double" Nullable="false" />
+    <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionYear" Type="Int32" Nullable="false" />
+    <Property Name="InscriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="StartCurrencyYear" Type="Int32" Nullable="false" />
+    <Property Name="EndCurrencyYear" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Person">
+    <Key>
+      <PropertyRef Name="Rut" />
+    </Key>
+    <Property Name="Rut" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Acquirers" Relationship="Self.FK__Acquirer__Rut__440B1D61" FromRole="Person" ToRole="Acquirer" />
+    <NavigationProperty Name="Alienators" Relationship="Self.FK__Alienator__Rut__403A8C7D" FromRole="Person" ToRole="Alienator" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="Comunne" />
+      <PropertyRef Name="Block" />
+      <PropertyRef Name="Site" />
+    </Key>
+    <Property Name="Comunne" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Block" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Site" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="InscriptionYear" Type="Int32" Nullable="false" />
+    <Property Name="InscriptionDate" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <Association Name="FK__Acquirer__Atenti__44FF419A">
+    <End Role="Inscription" Type="Self.Inscription" Multiplicity="1" />
+    <End Role="Acquirer" Type="Self.Acquirer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscription">
+        <PropertyRef Name="AtentionNumber" />
+      </Principal>
+      <Dependent Role="Acquirer">
+        <PropertyRef Name="AtentionNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Acquirer__Rut__440B1D61">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Acquirer" Type="Self.Acquirer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Rut" />
+      </Principal>
+      <Dependent Role="Acquirer">
+        <PropertyRef Name="Rut" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Alienator__Atent__412EB0B6">
+    <End Role="Inscription" Type="Self.Inscription" Multiplicity="1" />
+    <End Role="Alienator" Type="Self.Alienator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inscription">
+        <PropertyRef Name="AtentionNumber" />
+      </Principal>
+      <Dependent Role="Alienator">
+        <PropertyRef Name="AtentionNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Alienator__Rut__403A8C7D">
+    <End Role="Person" Type="Self.Person" Multiplicity="1" />
+    <End Role="Alienator" Type="Self.Alienator" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Person">
+        <PropertyRef Name="Rut" />
+      </Principal>
+      <Dependent Role="Alienator">
+        <PropertyRef Name="Rut" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BienesRaicesDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Acquirers" EntityType="Self.Acquirer" />
+    <EntitySet Name="Alienators" EntityType="Self.Alienator" />
+    <EntitySet Name="Inscriptions" EntityType="Self.Inscription" />
+    <EntitySet Name="Multyproperties" EntityType="Self.Multyproperty" />
+    <EntitySet Name="People" EntityType="Self.Person" />
+    <EntitySet Name="Properties" EntityType="Self.Property" />
+    <AssociationSet Name="FK__Acquirer__Atenti__44FF419A" Association="Self.FK__Acquirer__Atenti__44FF419A">
+      <End Role="Inscription" EntitySet="Inscriptions" />
+      <End Role="Acquirer" EntitySet="Acquirers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Acquirer__Rut__440B1D61" Association="Self.FK__Acquirer__Rut__440B1D61">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Acquirer" EntitySet="Acquirers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Alienator__Atent__412EB0B6" Association="Self.FK__Alienator__Atent__412EB0B6">
+      <End Role="Inscription" EntitySet="Inscriptions" />
+      <End Role="Alienator" EntitySet="Alienators" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Alienator__Rut__403A8C7D" Association="Self.FK__Alienator__Rut__403A8C7D">
+      <End Role="Person" EntitySet="People" />
+      <End Role="Alienator" EntitySet="Alienators" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

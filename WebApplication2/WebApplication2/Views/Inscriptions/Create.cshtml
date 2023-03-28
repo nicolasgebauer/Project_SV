@@ -1,0 +1,174 @@
+﻿@model WebApplication2.Models.Inscription
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Inscripción</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.CNE, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <select name="CNE" class="form-control">
+                    <option value="Compraventa">Compraventa</option>
+                    <option value="Regularización de Patrimonio">Regularización de Patrimonio</option>
+                </select>
+                @Html.ValidationMessageFor(model => model.CNE, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Comunne, "Comuna", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Comunne, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Comunne, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Block, "Manzana", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Block, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Block, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Site, "Predio", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Site, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Site, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Page, "Foja", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Page, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Page, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InscriptionNumber, "Numero de Inscripción", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InscriptionNumber, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.InscriptionNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.InscriptionDate, "Fecha de Inscripción", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.InscriptionDate, new { htmlAttributes = new { @class = "form-control", type = "date" } })
+                @Html.ValidationMessageFor(model => model.InscriptionDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br>
+        <h5>Enajenantes</h5>
+        <form method="post">
+            <div>
+                <label for="rut_alienator">Rut:</label>
+                <input type="text" id="rut_alienator" name="rut_alienator" />
+                <label for="percent_alienator">Porcentaje de Derechos:</label>
+                <input type="number" id="percent_alienator" name="percent_alienator" />
+                <label for="check_alienator">Checkbox:</label>
+                <input type="checkbox" id="check_alienator" name="check_alienator" />
+                <button type="button" id="new_alienator">Agregar Enajenante</button>
+            </div>
+        </form>
+        <div class="col-md-6">
+            <table class="table table-bordered" id="alienators">
+                <thead>
+                    <tr>
+                        <th>Rut Enajenantes</th>
+                        <th>Porcentaje de Derechos (%)</th>
+                        <th>Checkbox</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <br>
+        <h5>Adquirientes</h5>
+        <form method="post">
+            <div>
+                <label for="rut_acquirer">Rut:</label>
+                <input type="text" id="rut_acquirer" name="rut_acquirer" />
+                <label for="perecnt_acquirer">Porcentaje de Derechos:</label>
+                <input type="number" id="percent_acquirer" name="percent_acquirer" />
+                <label for="check_acquirer">Checkbox:</label>
+                <input type="checkbox" id="check_acquirer" name="check_acquirer" />
+                <button type="button" id="new_acquirer">Agregar Adquiriente</button>
+            </div>
+        </form>
+        <div class="col-md-6">
+            <table class="table table-bordered" id="acquirers">
+                <thead>
+                    <tr>
+                        <th>Rut Adquirientes</th>
+                        <th>Porcentaje de Derechos (%)</th>
+                        <th>Checkbox</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function () {
+            // Agregar una nueva fila a la tabla cuando se presione el botón "Agregar fila"
+            $("#new_alienator").click(function () {
+                var rut = $("#rut_alienator").val();
+                var porcentaje = $("#percent_alienator").val();
+                var check = $("#check_alienator").is(":checked");
+                // Agregar una nueva fila a la tabla con los datos ingresados
+                $("#alienators").append("<tr><td>" + rut + "</td><td>" + porcentaje + "</td><td>" + check + "</td></tr>");
+                // Limpiar los campos de entrada después de agregarlos a la tabla
+                $("#rut_alienator").val("");
+                $("#percent_alienator").val("");
+                $("#check_alienator").prop("checked", false);
+            });
+        });
+        $(document).ready(function () {
+            // Agregar una nueva fila a la tabla cuando se presione el botón "Agregar fila"
+            $("#new_acquirer").click(function () {
+                var rut = $("#rut_acquirer").val();
+                var porcentaje = $("#percent_acquirer").val();
+                var check = $("#check_acquirer").is(":checked");
+                // Agregar una nueva fila a la tabla con los datos ingresados
+                $("#acquirers").append("<tr><td>" + rut + "</td><td>" + porcentaje + "</td><td>" + check + "</td></tr>");
+                // Limpiar los campos de entrada después de agregarlos a la tabla
+                $("#rut_acquirer").val("");
+                $("#percent_acquirer").val("");
+                $("#check_acquirer").prop("checked", false);
+            });
+        });
+    </script>
+
+}
