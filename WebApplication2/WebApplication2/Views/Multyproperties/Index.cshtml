@@ -29,6 +29,9 @@
             @Html.DisplayNameFor(model => model.Percentage)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Rut)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Comunne)
         </th>
         <th>
@@ -66,6 +69,9 @@
                 @Html.DisplayFor(modelItem => item.Percentage)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Rut)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.Comunne)
             </td>
             <td>
@@ -95,8 +101,8 @@
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+               
+                @Html.ActionLink("Delete", "Delete", new { comunne = item.Comunne, block = item.Block, site = item.Site, rut = item.Rut })
             </td>
         </tr>
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Ajax.Utilities;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -6,8 +7,10 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Razor.Parser.SyntaxTree;
 using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
@@ -111,13 +114,13 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Multyproperties/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(string comunne, string block, string site, string rut)
         {
-            if (id == null)
+            if (rut == null && comunne == null && block == null && site == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Multyproperty multyproperty = db.Multyproperties.Find(id);
+            Multyproperty multyproperty = db.Multyproperties.Find(comunne, block, site, rut);
             if (multyproperty == null)
             {
                 return HttpNotFound();
@@ -128,9 +131,9 @@ namespace WebApplication2.Controllers
         // POST: Multyproperties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(string comunne, string block, string site, string rut)
         {
-            Multyproperty multyproperty = db.Multyproperties.Find(id);
+            Multyproperty multyproperty = db.Multyproperties.Find(comunne, block, site, rut);
             db.Multyproperties.Remove(multyproperty);
             db.SaveChanges();
             return RedirectToAction("Index");
