@@ -10,7 +10,7 @@
     @Html.ActionLink("Create New", "Create")
 </p>
 
-@using (Html.BeginForm("Index", "Multyproperties", FormMethod.Post, new { route = "Multyproperties/index" }))
+@using (Html.BeginForm("Index", "Multyproperties", FormMethod.Post, new { route = "Multyproperties/index", id = "filterForm" }))
 {
     <p>
         Commune: @Html.TextBox("commune")
@@ -19,13 +19,25 @@
         Start Year: @Html.TextBox("startYear")
         End Year: @Html.TextBox("endYear")
         <button type="submit" class="btn btn-primary">Filter</button>
+        <button type="button" class="btn btn-secondary" onclick="clearForm()">Clear</button>
     </p>
 }
 <table class="table">
     <tr>
+
         <th>
             @Html.DisplayNameFor(model => model.Percentage)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comunne)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Block)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Site)
+        </th>
+
         <th>
             @Html.DisplayNameFor(model => model.Page)
         </th>
@@ -54,6 +66,16 @@
                 @Html.DisplayFor(modelItem => item.Percentage)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Comunne)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Block)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Site)
+            </td>
+
+            <td>
                 @Html.DisplayFor(modelItem => item.Page)
             </td>
             <td>
@@ -80,3 +102,14 @@
     }
 
 </table>
+<script>
+    function clearForm() {
+        document.getElementById("commune").value = "";
+        document.getElementById("block").value = "";
+        document.getElementById("site").value = "";
+        document.getElementById("startYear").value = "";
+        document.getElementById("endYear").value = "";
+        var form = document.getElementById("filterForm");
+        form.submit();
+    }
+</script>
