@@ -140,35 +140,38 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    <script>
-        $(document).ready(function () {
-            // Agregar una nueva fila a la tabla cuando se presione el botón "Agregar fila"
-            $("#new_alienator").click(function () {
-                var rut = $("#rut_alienator").val();
-                var porcentaje = $("#percent_alienator").val();
-                var check = $("#check_alienator").is(":checked");
-                // Agregar una nueva fila a la tabla con los datos ingresados
-                $("#alienators").append("<tr><td>" + rut + "</td><td>" + porcentaje + "</td><td>" + check + "</td></tr>");
-                // Limpiar los campos de entrada después de agregarlos a la tabla
-                $("#rut_alienator").val("");
-                $("#percent_alienator").val("");
-                $("#check_alienator").prop("checked", false);
-            });
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Agregar una nueva fila a la tabla cuando se presione el botón "Agregar fila"
+        document.getElementById("new_alienator").addEventListener('click', function () {
+            var rut = document.getElementById("rut_alienator").value;
+            var porcentaje = document.getElementById("percent_alienator").value;
+            var check = document.getElementById("check_alienator").checked;
+            // Agregar una nueva fila a la tabla con los datos ingresados
+            var row = document.createElement("tr");
+            row.innerHTML = "<td>" + rut + "</td><td>" + porcentaje + "</td><td>" + check + "</td>";
+            document.getElementById("alienators").appendChild(row);
+            // Limpiar los campos de entrada después de agregarlos a la tabla
+            document.getElementById("rut_alienator").value = "";
+            document.getElementById("percent_alienator").value = "";
+            document.getElementById("check_alienator").checked = false;
         });
-        $(document).ready(function () {
-            // Agregar una nueva fila a la tabla cuando se presione el botón "Agregar fila"
-            $("#new_acquirer").click(function () {
-                var rut = $("#rut_acquirer").val();
-                var porcentaje = $("#percent_acquirer").val();
-                var check = $("#check_acquirer").is(":checked");
-                // Agregar una nueva fila a la tabla con los datos ingresados
-                $("#acquirers").append("<tr><td>" + rut + "</td><td>" + porcentaje + "</td><td>" + check + "</td></tr>");
-                // Limpiar los campos de entrada después de agregarlos a la tabla
-                $("#rut_acquirer").val("");
-                $("#percent_acquirer").val("");
-                $("#check_acquirer").prop("checked", false);
-            });
+
+        // Agregar una nueva fila a la tabla cuando se presione el botón "Agregar fila"
+        document.getElementById("new_acquirer").addEventListener('click', function () {
+            var rut = document.getElementById("rut_acquirer").value;
+            var porcentaje = document.getElementById("percent_acquirer").value;
+            var check = document.getElementById("check_acquirer").checked;
+            // Agregar una nueva fila a la tabla con los datos ingresados
+            var row = document.createElement("tr");
+            row.innerHTML = "<td>" + rut + "</td><td>" + porcentaje + "</td><td>" + check + "</td>";
+            document.getElementById("acquirers").appendChild(row);
+            // Limpiar los campos de entrada después de agregarlos a la tabla
+            document.getElementById("rut_acquirer").value = "";
+            document.getElementById("percent_acquirer").value = "";
+            document.getElementById("check_acquirer").checked = false;
         });
-    </script>
+    });
+</script>
 
 }
